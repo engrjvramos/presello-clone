@@ -8,7 +8,9 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import ForgotPassword from "./pages/ForgotPassword";
 import Profile from "./pages/Profile";
+import Listing from "./pages/Listing";
 import CreateListing from "./pages/CreateListing";
+import EditListing from "./pages/EditListing";
 import NotFound from "./pages/NotFound.jsx";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -31,8 +33,15 @@ function App() {
           <Route path="/profile" element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
+          <Route
+            path="/category/:categoryName/:listingId"
+            element={<Listing />}
+          />
           <Route path="/create-listing" element={<PrivateRoute />}>
             <Route path="/create-listing" element={<CreateListing />} />
+          </Route>
+          <Route path="/edit-listing" element={<PrivateRoute />}>
+            <Route path="/edit-listing/:listingId" element={<EditListing />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

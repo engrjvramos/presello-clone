@@ -66,13 +66,6 @@ const Sidebar = ({ isOpen, setIsOpen, pageState }) => {
             >
               {pageState}
             </Link>
-            <Link
-              to="/create-listing"
-              className="uppercase font-semibold text-sm py-2 px-3 border-2 mb-4 border-clrGold bg-clrGold text-clrDark hover:bg-clrDark hover:text-clrGold transition-all ease-in-out"
-              onClick={() => setIsOpen(false)}
-            >
-              List My Property
-            </Link>
           </div>
         </nav>
         <div className="flex flex-col justify-center items-center gap-10">

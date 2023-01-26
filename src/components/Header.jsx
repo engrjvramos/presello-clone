@@ -59,7 +59,7 @@ const Header = () => {
           <nav className="hidden items-center md:gap-x-6 lg:gap-x-8 md:flex">
             <Link
               to="/"
-              className={`uppercase font-semibold text-sm py-[10px] px-[5px] hover:text-clrGold transition-all ease-in-out duration-200 ${
+              className={`uppercase font-semibold py-[10px] px-[5px] hover:text-clrGold transition-all ease-in-out duration-200 ${
                 pathMatchRoute("/") && "text-white "
               }`}
             >
@@ -67,7 +67,7 @@ const Header = () => {
             </Link>
             <Link
               to="/properties"
-              className={`uppercase font-semibold text-sm py-[10px] px-[5px] hover:text-clrGold transition-all ease-in-out duration-200 ${
+              className={`uppercase font-semibold py-[10px] px-[5px] hover:text-clrGold transition-all ease-in-out duration-200 ${
                 pathMatchRoute("/properties") && "text-white "
               }`}
             >
@@ -75,30 +75,23 @@ const Header = () => {
             </Link>
             <Link
               to="/contact"
-              className={`uppercase font-semibold text-sm py-[10px] px-[5px] hover:text-clrGold transition-all ease-in-out duration-200 ${
+              className={`uppercase font-semibold py-[10px] px-[5px] hover:text-clrGold transition-all ease-in-out duration-200 ${
                 pathMatchRoute("/contact") && "text-white "
               }`}
             >
               Contact
             </Link>
-          </nav>
-          <div className="hidden items-center gap-x-4 md:flex">
             <Link
               to="profile"
-              className={`uppercase font-semibold text-sm py-[10px] px-[5px] hover:text-clrGold transition-all ease-in-out duration-200 ${
+              className={`uppercase font-semibold py-[10px] px-[5px] hover:text-clrGold transition-all ease-in-out duration-200 ${
                 (pathMatchRoute("/sign-in") || pathMatchRoute("/profile")) &&
                 "text-white "
               }`}
             >
               {pageState}
             </Link>
-            <Link
-              to="/create-listing"
-              className="uppercase font-semibold text-sm py-2 px-3 border-2 border-clrGold bg-clrGold text-clrDark hover:bg-clrDark hover:text-clrGold transition-all ease-in-out"
-            >
-              List My Property
-            </Link>
-          </div>
+          </nav>
+
           <div className="flex items-center md:hidden">
             {/* Open menu button*/}
             <button className="inline-flex items-center justify-center rounded-md p-1 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">

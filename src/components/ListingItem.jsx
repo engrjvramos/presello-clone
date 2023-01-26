@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
-import { MdLocationOn, MdEdit } from "react-icons/md";
+import { MdLocationOn } from "react-icons/md";
 import { AiOutlineFieldTime } from "react-icons/ai";
-import { FaTrash, FaBed, FaShower } from "react-icons/fa";
+import { FaTrash, FaBed, FaShower, FaEdit } from "react-icons/fa";
 
 const ListingItem = ({ listing, id, onEdit, onDelete }) => {
   return (
@@ -40,7 +40,10 @@ const ListingItem = ({ listing, id, onEdit, onDelete }) => {
           </div>
           {/* ID NUMBER */}
           <div className="text-sm font-semibold text-gray-700 mb-4">
-            Presello ID No.{listing.userRef.substr(listing.userRef.length - 4)}
+            Presello ID No.
+            {(Math.floor(Math.random() * 10000) + 10000)
+              .toString()
+              .substring(1)}
           </div>
           {/* TITLE */}
           <p
@@ -58,7 +61,7 @@ const ListingItem = ({ listing, id, onEdit, onDelete }) => {
             </p>
           </div>
           {/* BED/BATH */}
-          <div className="flex items-center gap-4 py-4 max-[350px]:flex-wrap">
+          <div className="flex items-center gap-4 pt-4 max-[350px]:flex-wrap">
             <div className="w-full flex items-center gap-2">
               <FaBed className="text-3xl" />
               <p className="text-sm w-full">
@@ -84,7 +87,7 @@ const ListingItem = ({ listing, id, onEdit, onDelete }) => {
             className="flex items-center justify-center w-full py-2 font-medium  bg-gray-200 hover:bg-clrGold cursor-pointer transition ease-in-out"
             onClick={() => onEdit(listing.id)}
           >
-            <MdEdit className="mr-2" />
+            <FaEdit className="mr-2" />
             Edit
           </div>
         )}

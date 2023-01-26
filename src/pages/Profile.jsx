@@ -13,7 +13,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { toast } from "react-toastify";
-import { AiFillEdit } from "react-icons/ai";
+import { FaEdit } from "react-icons/fa";
 import { GrAdd } from "react-icons/gr";
 import ListingItem from "../components/ListingItem";
 
@@ -101,21 +101,21 @@ const Profile = () => {
 
   return (
     <main>
-      <div className="max-w-7xl mx-auto py-16 px-5">
-        <section className="my-10">
+      <div className="max-w-7xl mx-auto py-12 px-5">
+        <section className="mb-10">
           <div className="py-5">
             <h1 className="text-2xl font-semibold uppercase mb-6 flex justify-between items-center border-b border-b-gray-300 pb-2">
               My Profile
-              <span
-                className="text-red-600 hover:text-red-700 transition ease-in-out duration-200 cursor-pointer flex items-center text-base"
+              <button
+                className="flex items-center text-base border py-2 px-4 hover:bg-gray-100 transition-all ease-in"
                 onClick={() => {
                   changeDetail && onSubmit();
                   setChangeDetail((prevState) => !prevState);
                 }}
               >
-                <AiFillEdit className="mr-2" />
-                {changeDetail ? "Apply change" : "Edit"}
-              </span>
+                <FaEdit className="mr-2" />
+                {changeDetail ? "Save" : "Edit"}
+              </button>
             </h1>
 
             <div>
