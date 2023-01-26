@@ -276,7 +276,7 @@ const CreateListing = () => {
                   id="title"
                   value={title}
                   onChange={onChange}
-                  maxLength="80"
+                  maxLength="65"
                   minLength="10"
                   required
                   className="w-full mb-2"
@@ -294,7 +294,7 @@ const CreateListing = () => {
                 )}
               </div>
               <p className="text-right text-xs  text-gray-500">{`${
-                80 - title.length
+                65 - title.length
               } character(s)`}</p>
             </div>
             {/* Address */}

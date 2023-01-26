@@ -47,7 +47,7 @@ const Header = () => {
   return (
     <>
       <header className="sticky top-0 z-40 bg-clrDark shadow-sm">
-        <div className="max-w-6xl mx-auto p-5 text-gray-400 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto p-5 text-gray-400 flex items-center justify-between">
           <div>
             <img
               src="https://www.presello.com/wp-content/uploads/2019/10/presello-logo-text.png"
@@ -108,7 +108,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} pageState={pageState} />
       <div
         className={`fixed -z-10 bg-black bg-opacity-60 opacity-0 transition-all duration-300 ease-in-out ${
           isOpen && "z-[49] top-0 left-0 bottom-0 w-full h-full opacity-100"

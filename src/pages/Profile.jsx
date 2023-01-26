@@ -101,10 +101,10 @@ const Profile = () => {
 
   return (
     <main>
-      <div className="flex max-w-6xl mx-auto py-16 px-5">
-        <section className="w-[30%] border-r border-r-gray-300">
-          <div className="py-5 pr-10 pl-5 ">
-            <h1 className="text-2xl font-semibold uppercase mb-6 flex justify-between items-center border-b border-b-gray-300 pb-4">
+      <div className="max-w-7xl mx-auto py-16 px-5">
+        <section className="my-10">
+          <div className="py-5">
+            <h1 className="text-2xl font-semibold uppercase mb-6 flex justify-between items-center border-b border-b-gray-300 pb-2">
               My Profile
               <span
                 className="text-red-600 hover:text-red-700 transition ease-in-out duration-200 cursor-pointer flex items-center text-base"
@@ -151,16 +151,16 @@ const Profile = () => {
             </div>
           </div>
         </section>
-        <section className="flex-1">
-          <div className="py-5 pl-10 pr-5">
-            <h1 className="text-2xl font-semibold uppercase mb-6 flex justify-between items-center border-b border-b-gray-300 pb-4">
+        <section className="mb-10">
+          <div className="py-5">
+            <h1 className="text-2xl font-semibold uppercase mb-6 flex justify-between items-center border-b border-b-gray-300 pb-2">
               My Listings
               <button
                 className="flex items-center text-base border py-2 px-4 hover:bg-gray-100 transition-all ease-in"
                 onClick={() => navigate("/create-listing")}
               >
                 <GrAdd className="mr-2" />
-                Add Listing
+                Add
               </button>
             </h1>
             <div>
@@ -169,7 +169,7 @@ const Profile = () => {
               )}
               {!loading && listings.length > 0 && (
                 <>
-                  <ul className="grid sm:grid-cols-2 lg:grid-cols-3">
+                  <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {listings.map((listing) => (
                       <ListingItem
                         key={listing.id}

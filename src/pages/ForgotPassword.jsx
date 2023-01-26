@@ -34,12 +34,12 @@ const SignIn = () => {
         }}
         className="relative w-full h-[300px] overflow-hidden flex items-center "
       >
-        <h1 className="uppercase font-semibold text-3xl max-w-6xl mx-auto text-white">
+        <h1 className="uppercase font-semibold text-3xl max-w-7xl mx-auto text-white">
           Forgot Password
         </h1>
       </section>
       <section>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 md:gap-x-6 lg:gap-x-10 py-16 px-5">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 md:gap-x-6 lg:gap-x-10 py-16 px-5">
           <div>
             <h1 className="text-2xl sm:text-3xl font-semibold mb-10 border-b border-b-gray-200 py-3">
               Reset your password

@@ -2,7 +2,7 @@ import { AiFillFacebook, AiFillYoutube, AiFillInstagram } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
-const Sidebar = ({ isOpen, setIsOpen }) => {
+const Sidebar = ({ isOpen, setIsOpen, pageState }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const pathMatchRoute = (route) => {
@@ -58,12 +58,13 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             </Link>
             <Link
               to="/sign-in"
-              className={`uppercase font-semibold text-sm py-[10px] px-[5px] mb-4  hover:text-clrGold transition-all ease-in-out duration-200 ${
-                pathMatchRoute("/sign-in") && "text-white "
+              className={`uppercase font-semibold text-sm py-[10px] px-[5px] mb-4  hover:text-clrGold transition-all ease-in-out duration-200  ${
+                (pathMatchRoute("/sign-in") || pathMatchRoute("/profile")) &&
+                "text-white "
               }`}
               onClick={() => setIsOpen(false)}
             >
-              Sign In
+              {pageState}
             </Link>
             <Link
               to="/create-listing"
