@@ -1,35 +1,113 @@
 import { AiFillFacebook, AiFillYoutube, AiFillInstagram } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, setIsOpen }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const pathMatchRoute = (route) => {
+    if (route === location.pathname) {
+      return true;
+    }
+  };
   return (
-    <div className="fixed w-64 top-0 right-0 bottom-0 bg-clrDark h-full text-white z-50">
-      <nav className="">
-        <div className="flex flex-col justify-center text-center">
-          <Link to="/" className="py-8">
-            Home
-          </Link>
-          <Link to="/properties">Properties</Link>
-          <Link to="/contact">Contact</Link>
-        </div>
-        <div className="divide-y-2">
-          <Link to="/sign-in">Sign In</Link>
-        </div>
-        <div>
-          <button>Sell My Property</button>
-          <div>
-            <Link to="#">
-              <AiFillYoutube />
+    <div
+      className={`fixed w-60 top-0 right-0 bottom-0 bg-clrDark h-full text-white z-50 translate-x-60 transition-all duration-300 ease-in-out ${
+        isOpen && "translate-x-0"
+      }`}
+    >
+      <div className="flex items-center justify-end my-5 mx-6">
+        {/* Close menu button*/}
+        <button className="inline-flex items-center justify-center rounded-md p-1 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+          <span className="sr-only">Close Sidebar</span>
+          <XMarkIcon
+            className="block h-8 w-8"
+            onClick={() => setIsOpen(false)}
+          />
+        </button>
+      </div>
+      <div className="m-8">
+        <nav className="mb-10">
+          <div className="flex flex-col ">
+            <Link
+              to="/"
+              className={`uppercase font-semibold text-sm py-[10px] px-[5px] mb-4 hover:text-clrGold transition-all ease-in-out duration-200 ${
+                pathMatchRoute("/") && "text-white "
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              Home
             </Link>
-            <Link to="#">
-              <AiFillFacebook />
+            <Link
+              to="/properties"
+              className={`uppercase font-semibold text-sm py-[10px] px-[5px] mb-4 hover:text-clrGold transition-all ease-in-out duration-200 ${
+                pathMatchRoute("/properties") && "text-white "
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              Properties
             </Link>
-            <Link to="#">
-              <AiFillInstagram />
+            <Link
+              to="/contact"
+              className={`uppercase font-semibold text-sm py-[10px] px-[5px] mb-4 hover:text-clrGold transition-all ease-in-out duration-200 ${
+                pathMatchRoute("/contact") && "text-white "
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              Contact
+            </Link>
+            <Link
+              to="/sign-in"
+              className={`uppercase font-semibold text-sm py-[10px] px-[5px] mb-4  hover:text-clrGold transition-all ease-in-out duration-200 ${
+                pathMatchRoute("/sign-in") && "text-white "
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              Sign In
+            </Link>
+            <Link
+              to="/create-listing"
+              className="uppercase font-semibold text-sm py-2 px-3 border-2 mb-4 border-clrGold bg-clrGold text-clrDark hover:bg-clrDark hover:text-clrGold transition-all ease-in-out"
+              onClick={() => setIsOpen(false)}
+            >
+              List My Property
             </Link>
           </div>
+        </nav>
+        <div className="flex flex-col justify-center items-center gap-10">
+          <div>
+            <img
+              src="https://www.presello.com/wp-content/uploads/2019/10/presello-logo-text.png"
+              alt="logo"
+              className="cursor-pointer h-6"
+              onClick={() => navigate("/")}
+            />
+          </div>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://www.youtube.com/channel/UCxyLwHwz15uVeXpZjsV1Y2A"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <AiFillYoutube className="w-6 h-6 hover:text-clrGold transition ease-in" />
+            </a>
+            <a
+              href="https://www.facebook.com/PreselloRealtyChannel"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <AiFillFacebook className="w-6 h-6 hover:text-clrGold transition ease-in" />
+            </a>
+            <a
+              href="https://www.instagram.com/presello_official/?hl=en"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <AiFillInstagram className="w-6 h-6 hover:text-clrGold transition ease-in" />
+            </a>
+          </div>
         </div>
-      </nav>
+      </div>
     </div>
   );
 };
