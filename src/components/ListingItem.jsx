@@ -34,16 +34,14 @@ const ListingItem = ({ listing, id, onEdit, onDelete }) => {
                     .toString()
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </div>
-            <div className="ml-2">
-              {listing.offerType === "rent" && " / month"}
-            </div>
+            {listing.offerType === "rent" && (
+              <span className="ml-1 text-gray-700 font-semibold">/ month</span>
+            )}
           </div>
           {/* ID NUMBER */}
           <div className="text-sm font-semibold text-gray-700 mb-4">
             Presello ID No.
-            {(Math.floor(Math.random() * 10000) + 10000)
-              .toString()
-              .substring(1)}
+            {id.slice(-6).toUpperCase()}
           </div>
           {/* TITLE */}
           <p
@@ -64,7 +62,7 @@ const ListingItem = ({ listing, id, onEdit, onDelete }) => {
           <div className="flex items-center gap-4 pt-4 max-[350px]:flex-wrap">
             <div className="w-full flex items-center gap-2">
               <FaBed className="text-3xl" />
-              <p className="text-sm w-full">
+              <p className="text-sm md:text-base w-full">
                 {listing.bedrooms > 1
                   ? `${listing.bedrooms} Bedrooms`
                   : "1 Bedroom"}
@@ -72,7 +70,7 @@ const ListingItem = ({ listing, id, onEdit, onDelete }) => {
             </div>
             <div className="w-full flex items-center gap-2">
               <FaShower className="text-3xl" />
-              <p className="text-sm w-full">
+              <p className="text-sm md:text-base w-full">
                 {listing.bathrooms > 1
                   ? `${listing.bathrooms} Bathrooms`
                   : "1 Bathroom"}

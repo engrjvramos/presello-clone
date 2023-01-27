@@ -25,6 +25,7 @@ const CreateListing = () => {
     offerType: "sale",
     propertyType: "townhouse",
     title: "",
+    furnishType: "furnished",
     floorArea: 1,
     lotArea: 1,
     bedrooms: 1,
@@ -43,6 +44,7 @@ const CreateListing = () => {
     offerType,
     propertyType,
     title,
+    furnishType,
     floorArea,
     lotArea,
     bedrooms,
@@ -101,7 +103,7 @@ const CreateListing = () => {
         `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`,
       );
       const data = await response.json();
-      console.log(data);
+
       geolocation.lat = data.results[0]?.geometry.location.lat ?? 0;
       geolocation.lng = data.results[0]?.geometry.location.lng ?? 0;
 
@@ -160,6 +162,7 @@ const CreateListing = () => {
 
     const formDataCopy = {
       ...formData,
+      features,
       imgUrls,
       geolocation,
       timestamp: serverTimestamp(),
@@ -364,6 +367,21 @@ const CreateListing = () => {
                   className="w-full"
                 />
               </div>
+              <div className="w-full">
+                <label className="block mb-1 font-medium">
+                  Furnishing <span className="text-red-500">*</span>
+                </label>
+                <select
+                  id="furnishType"
+                  value={furnishType}
+                  onChange={onChange}
+                  className="w-full"
+                >
+                  <option value="Furnished">Furnished</option>
+                  <option value="Semi-Furnished">Semi-Furnished</option>
+                  <option value="Unfurnished">Unfurnished</option>
+                </select>
+              </div>
             </div>
             {/* Bed-Bath-Carports */}
             <div className="mb-6 flex items-center gap-x-4 gap-y-6 max-[400px]:flex-col">
@@ -487,8 +505,8 @@ const CreateListing = () => {
                 Regular Price <span className="text-red-500">*</span>
               </label>
               <div className="flex w-full justify-center items-center gap-x-4">
-                <div class="relative w-full">
-                  <span class="absolute top-1/2 left-5 -translate-y-1/2 pointer-events-none">
+                <div className="relative w-full">
+                  <span className="absolute top-1/2 left-5 -translate-y-1/2 pointer-events-none">
                     ₱
                   </span>
                   <input
@@ -517,8 +535,8 @@ const CreateListing = () => {
                   Discounted Price <span className="text-red-500">*</span>
                 </label>
                 <div className="flex w-full justify-center items-center gap-x-4">
-                  <div class="relative w-full">
-                    <span class="absolute top-1/2 left-5 -translate-y-1/2 pointer-events-none">
+                  <div className="relative w-full">
+                    <span className="absolute top-1/2 left-5 -translate-y-1/2 pointer-events-none">
                       ₱
                     </span>
                     <input
@@ -555,7 +573,7 @@ const CreateListing = () => {
                 required
                 className="p-0 w-full cursor-pointer file:py-2 file:px-3 file:border-y-0 file:mr-3 file:border-l-0 file:border-r file:bg-clrDark file:text-white form-input"
               />
-              <p class="mt-2 text-xs text-gray-500" id="file_input_help">
+              <p className="mt-2 text-xs text-gray-500" id="file_input_help">
                 JPEG, PNG or JPG (MAX. 6). First image will be the cover image.
               </p>
             </div>

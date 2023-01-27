@@ -31,8 +31,6 @@ const SignIn = () => {
         password,
       );
 
-      console.log(auth.currentUser);
-
       updateProfile(auth.currentUser, {
         displayName: name,
       });

@@ -519,8 +519,8 @@ const EditListing = () => {
                 Regular Price <span className="text-red-500">*</span>
               </label>
               <div className="flex w-full justify-center items-center gap-x-4">
-                <div class="relative w-full">
-                  <span class="absolute top-1/2 left-5 -translate-y-1/2 pointer-events-none">
+                <div className="relative w-full">
+                  <span className="absolute top-1/2 left-5 -translate-y-1/2 pointer-events-none">
                     ₱
                   </span>
                   <input
@@ -549,8 +549,8 @@ const EditListing = () => {
                   Discounted Price <span className="text-red-500">*</span>
                 </label>
                 <div className="flex w-full justify-center items-center gap-x-4">
-                  <div class="relative w-full">
-                    <span class="absolute top-1/2 left-5 -translate-y-1/2 pointer-events-none">
+                  <div className="relative w-full">
+                    <span className="absolute top-1/2 left-5 -translate-y-1/2 pointer-events-none">
                       ₱
                     </span>
                     <input
@@ -587,7 +587,7 @@ const EditListing = () => {
                 required
                 className="p-0 w-full cursor-pointer file:py-2 file:px-3 file:border-y-0 file:mr-3 file:border-l-0 file:border-r file:bg-clrDark file:text-white form-input"
               />
-              <p class="mt-2 text-xs text-gray-500" id="file_input_help">
+              <p className="mt-2 text-xs text-gray-500" id="file_input_help">
                 JPEG, PNG or JPG (MAX. 6). First image will be the cover image.
               </p>
             </div>

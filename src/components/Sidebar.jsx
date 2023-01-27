@@ -48,16 +48,7 @@ const Sidebar = ({ isOpen, setIsOpen, pageState }) => {
               Properties
             </Link>
             <Link
-              to="/contact"
-              className={`uppercase font-semibold text-sm py-[10px] px-[5px] mb-4 hover:text-clrGold transition-all ease-in-out duration-200 ${
-                pathMatchRoute("/contact") && "text-white "
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              Contact
-            </Link>
-            <Link
-              to="/sign-in"
+              to="/profile"
               className={`uppercase font-semibold text-sm py-[10px] px-[5px] mb-4  hover:text-clrGold transition-all ease-in-out duration-200  ${
                 (pathMatchRoute("/sign-in") || pathMatchRoute("/profile")) &&
                 "text-white "
