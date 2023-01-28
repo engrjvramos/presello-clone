@@ -281,7 +281,7 @@ const Listing = () => {
           </div>
           {/* MAP */}
           <div>
-            <div className="w-full h-[350px] md:h-[450px] z-10 overflow-x-hidden my-8">
+            <div className="w-full h-[350px] md:h-[450px] overflow-x-hidden my-8 ">
               <MapContainer
                 center={[listing.geolocation.lat, listing.geolocation.lng]}
                 zoom={13}

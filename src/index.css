@@ -24,6 +24,12 @@ footer {
   width: 100%;
 }
 
+.leaflet-pane,
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 0 !important;
+}
+
 .swiper-button-next:after,
 .swiper-button-prev:after {
   color: #aeaeae;
