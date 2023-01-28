@@ -12,7 +12,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { getAuth } from "firebase/auth";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, {
   EffectFade,
@@ -22,8 +22,6 @@ import SwiperCore, {
 } from "swiper";
 import "swiper/css/bundle";
 import {
-  FaShare,
-  FaMapMarkerAlt,
   FaBed,
   FaShower,
   FaCarAlt,
@@ -46,7 +44,6 @@ const Listing = () => {
   const [listing, setListing] = useState(null);
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [shareLinkCopied, setShareLinkCopied] = useState(false);
   const [contactOwner, setContactOwner] = useState(false);
 
   SwiperCore.use([Autoplay, Navigation, Pagination]);

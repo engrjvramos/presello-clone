@@ -13,6 +13,7 @@ import { addDoc, serverTimestamp, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AiOutlineClose } from "react-icons/ai";
+import { BiArrowBack } from "react-icons/bi";
 
 const CreateListing = () => {
   const navigate = useNavigate();
@@ -213,6 +214,15 @@ const CreateListing = () => {
     <main>
       <section>
         <div className="max-w-3xl mx-auto py-16 px-5">
+          <div className="mb-6">
+            <button
+              className="flex items-center text-base border py-2 px-4 hover:bg-gray-100 transition-all ease-in"
+              onClick={() => navigate("/profile")}
+            >
+              <BiArrowBack className="mr-2" />
+              Back to Profile
+            </button>
+          </div>
           <h1 className="text-2xl mb-6 font-semibold pb-4 border-b border-b-gray-200">
             Create a Listing
           </h1>
@@ -279,7 +289,7 @@ const CreateListing = () => {
                   id="title"
                   value={title}
                   onChange={onChange}
-                  maxLength="65"
+                  maxLength="80"
                   minLength="10"
                   required
                   className="w-full mb-2"
@@ -297,7 +307,7 @@ const CreateListing = () => {
                 )}
               </div>
               <p className="text-right text-xs  text-gray-500">{`${
-                65 - title.length
+                80 - title.length
               } character(s)`}</p>
             </div>
             {/* Address */}

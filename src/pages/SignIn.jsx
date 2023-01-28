@@ -43,7 +43,7 @@ const SignIn = () => {
       >
         <div className="max-w-7xl mx-auto h-full grid items-center content-center justify-center text-center md:justify-start gap-4 px-5">
           <div>
-            <h2 className="uppercase font-medium tracking-widest text-3xl md:text-4xl text-gray-300 mb-2">
+            <h2 className="uppercase font-medium tracking-widest text-3xl md:text-4xl text-gray-100 mb-2">
               Sign in
             </h2>
           </div>

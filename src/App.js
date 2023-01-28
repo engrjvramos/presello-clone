@@ -19,7 +19,7 @@ import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
-    <div className="App">
+    <div className="min-h-screen overflow-hidden block relative pt-[70px] sm:pb-80 pb-[650px]">
       <Router>
         <Header />
         <Sidebar />
