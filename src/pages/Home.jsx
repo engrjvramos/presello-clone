@@ -133,7 +133,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <div className="max-w-7xl mx-auto space-y-6 my-12 px-5">
+      <div className="max-w-7xl mx-auto space-y-12 my-12 px-5">
         {/* OFFER LISTINGS */}
         {offerListings && offerListings.length > 0 && (
           <section>

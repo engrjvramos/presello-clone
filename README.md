@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# Presello Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of contents
 
-## Available Scripts
+- [Presello Clone](#presello-clone)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [Summary](#summary)
+    - [Links](#links)
+    - [Screenshot](#screenshot)
+  - [Details](#details)
+    - [Project purpose and goal](#project-purpose-and-goal)
+    - [Built with](#built-with)
+    - [Lesson learned](#lesson-learned)
+    - [Future improvements](#future-improvements)
+  - [Getting started](#getting-started)
+    - [Installing](#installing)
+  - [Contributing](#contributing)
+  - [Author](#author)
+  - [Acknowledgments](#acknowledgments)
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+### Summary
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A real-estate web app built with React, Firebase and TailwindCSS that allows users to sign up and login to create and save their property listings permanently.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Links
 
-### `npm test`
+- Original Website: [Presello](https://www.presello.com/)
+- Solution URL: [GitHub](https://github.com/engrjvramos/presello-clone)
+- Live Site URL: [Vercel](https://presello-clone.vercel.app)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Screenshot
 
-### `npm run build`
+![](./src/assets/home.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Details
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Project purpose and goal
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The main purpose of this project is to take advantage of the capabilities of Firebase and have a functional web app up and running quickly. Secondly, since this is my first big project using React, I want to practice more with the framework itself and dive deeply into its convenient features.
 
-### `npm run eject`
+### Built with
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [React](https://reactjs.org/)
+- [React-Router-DOM](https://reactrouter.com/en/main)
+- [LeafletJS](https://leafletjs.com/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Firebase](https://firebase.google.com/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Lesson learned
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+I could not count how many lessons that I have learned from building this application. However, there are 3 most important lessons that I got out of it.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Using Firebase Authentication, Storage, and Database for users and listings. At first, I had no idea on how to implement these features but thankfully firebase provides a guide on their website on what to do and give examples on how to do it.
 
-## Learn More
+2. Having a better understanding of Short Circuiting (&&), the Nullish Coalescing Operator (??), and Optional Chaining (.?). These modern operators makes it easier to code conditional functions and makes your code cleaner and more readable instead of using if-statements.
+3. Having a better understanding of useState, useEffect and custom hooks.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Future improvements
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [ ] Add a sort by price, sort by date added and sort by floor area functionality.
+- [ ] Add filter by property type functionality.
+- [ ] Add framer motion for animations.
 
-### Code Splitting
+## Getting started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Analyzing the Bundle Size
+### Installing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Clone the repository and run the development server:
 
-### Making a Progressive Web App
+```bash
+npm install
+npm run dev
+# or
+yarn install
+yarn dev
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contributing
 
-### Advanced Configuration
+Please feel free to send pull request if you want to contribute!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Author
 
-### Deployment
+- Jose Roberto V. Ramos - [engrjvramos](https://engrjvramos.github.io)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Acknowledgments
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Presello](https://www.presello.com/) - Thank you Presello Dev Team for inspiring me to make this clone web app.
