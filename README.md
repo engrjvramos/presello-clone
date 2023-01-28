@@ -62,7 +62,7 @@ I could not count how many lessons that I have learned from building this applic
 
 - [ ] Add a sort by price, sort by date added and sort by floor area functionality.
 - [ ] Add filter by property type functionality.
-- [ ] Add framer motion for animations.
+- [ ] Add framer motion for page transition.
 
 ## Getting started
 
@@ -86,8 +86,4 @@ Please feel free to send pull request if you want to contribute!
 
 ## Author
 
-- Jose Roberto V. Ramos - [engrjvramos](https://engrjvramos.github.io)
-
-## Acknowledgments
-
-- [Presello](https://www.presello.com/) - Thank you Presello Dev Team for inspiring me to make this clone web app.
+- JVR - [engrjvramos](https://engrjvramos.github.io)
