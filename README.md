@@ -74,10 +74,10 @@ Clone the repository and run the development server:
 
 ```bash
 npm install
-npm run dev
+npm start
 # or
 yarn install
-yarn dev
+yarn start
 ```
 
 ## Contributing
