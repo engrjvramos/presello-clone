@@ -38,14 +38,34 @@ const Sidebar = ({ isOpen, setIsOpen, pageState }) => {
             >
               Home
             </Link>
+
             <Link
-              to="/properties"
+              to="/category/sale"
               className={`uppercase font-semibold text-sm py-[10px] px-[5px] mb-4 hover:text-clrGold transition-all ease-in-out duration-200 ${
-                pathMatchRoute("/properties") && "text-white "
+                pathMatchRoute("/category/sale") && "text-white "
               }`}
               onClick={() => setIsOpen(false)}
             >
-              Properties
+              Buy
+            </Link>
+            <Link
+              to="/category/rent"
+              className={`uppercase font-semibold text-sm py-[10px] px-[5px] mb-4 hover:text-clrGold transition-all ease-in-out duration-200 ${
+                pathMatchRoute("/category/rent") && "text-white "
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              Rent
+            </Link>
+
+            <Link
+              to="/offers"
+              className={`uppercase font-semibold text-sm py-[10px] px-[5px] mb-4 hover:text-clrGold transition-all ease-in-out duration-200 ${
+                pathMatchRoute("/offers") && "text-white "
+              }`}
+              onClick={() => setIsOpen(false)}
+            >
+              Offers
             </Link>
             <Link
               to="/profile"

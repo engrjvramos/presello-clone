@@ -1,24 +1,24 @@
-import { doc, getDoc } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
 import { db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 const Contact = ({ userRef, listing }) => {
-  const [landlord, setLandlord] = useState(null);
+  const [owner, setOwner] = useState(null);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    const getLandlord = async () => {
+    const getOwner = async () => {
       const docRef = doc(db, "users", userRef);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        setLandlord(docSnap.data());
+        setOwner(docSnap.data());
       } else {
-        toast.error("Could not get landlord data");
+        toast.error("Could not get owner's data");
       }
     };
-    getLandlord();
+    getOwner();
   }, [userRef]);
 
   const onChange = (e) => {
@@ -27,16 +27,24 @@ const Contact = ({ userRef, listing }) => {
 
   return (
     <>
-      {landlord !== null && (
+      {owner !== null && (
         <div className="flex flex-col w-full">
-          <p>
-            Contact {landlord.name} for the {listing.name.toLowerCase()}
+          <p className="text-gray-700">
+            Send a message to{" "}
+            <span className="capitalize font-medium text-clrDark">
+              {owner.name}
+            </span>{" "}
+            to inquire for the{" "}
+            <span className="capitalize font-medium text-clrDark">
+              {listing.title}
+            </span>
+            :
           </p>
           <div>
             <textarea
               name="message"
               id="message"
-              rows="2"
+              rows="5"
               value={message}
               onChange={onChange}
               placeholder="Message"
@@ -44,11 +52,11 @@ const Contact = ({ userRef, listing }) => {
             ></textarea>
           </div>
           <a
-            href={`mailto:${landlord.email}?Subject=${listing.name}&body=${message}`}
+            href={`mailto:${owner.email}?Subject=${listing.title}&body=${message}`}
           >
             <button
               type="button"
-              className="px-7 py-3 bg-blue-600 text-white rounded text-sm uppercase font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full text-center mb-6"
+              className="px-7 py-3 bg-clrGold text-clrDark text-sm uppercase font-semibold shadow-md hover:bg-clrDark hover:shadow-lg hover:text-clrGold  focus:shadow-lg active:shadow-lg active:text-white transition duration-150 ease-in-out w-full text-center mb-6"
             >
               Send Message
             </button>

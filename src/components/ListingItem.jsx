@@ -40,13 +40,12 @@ const ListingItem = ({ listing, id, onEdit, onDelete }) => {
           </div>
           {/* ID NUMBER */}
           <div className="text-sm font-semibold text-gray-700 mb-4">
-            Presello ID No.
-            {id.slice(-6).toUpperCase()}
+            Presello ID - {id.slice(-6).toUpperCase()}
           </div>
           {/* TITLE */}
           <p
             className={`${
-              listing.title.length < 20 && "h-14"
+              listing.title.length < 30 && "h-14"
             } font-medium text-xl mb-2 hover:text-clrGold transition ease-in duration-200`}
           >
             {listing.title}

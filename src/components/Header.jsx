@@ -10,15 +10,6 @@ const Header = () => {
   const [pageState, setPageState] = useState("Sign in");
   const auth = getAuth();
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownActive, setDropdownActive] = useState(false);
-
-  const handleDropdown = () => {
-    if (dropdownActive) {
-      setDropdownActive(false);
-    } else {
-      setDropdownActive(true);
-    }
-  };
 
   const pathMatchRoute = (route) => {
     if (route === location.pathname) {
@@ -74,39 +65,31 @@ const Header = () => {
             >
               Home
             </Link>
-            <div className="relative">
-              <div
-                className={`uppercase font-semibold py-[10px] px-[5px] hover:text-clrGold transition-all ease-in-out duration-200 cursor-pointer select-none ${
-                  pathMatchRoute("/category/sale") ||
-                  (pathMatchRoute("/category/rent") && "text-white ")
-                }`}
-                onClick={handleDropdown}
-              >
-                Properties
-              </div>
-              <div
-                className={`absolute top-[3.5rem] right-0 w-full ${
-                  dropdownActive ? "block" : "hidden"
-                }`}
-              >
-                <ul className="uppercase bg-clrDark text-gray-400 text-center font-semibold">
-                  <Link
-                    to="/category/sale"
-                    className="block hover:text-clrGold transition-all ease-in-out duration-200 py-[10px] px-[5px]"
-                    onClick={() => setDropdownActive(false)}
-                  >
-                    For Sale
-                  </Link>
-                  <Link
-                    to="/category/rent"
-                    className="block hover:text-clrGold transition-all ease-in-out duration-200 py-[10px] px-[5px]"
-                    onClick={() => setDropdownActive(false)}
-                  >
-                    For Rent
-                  </Link>
-                </ul>
-              </div>
-            </div>
+
+            <Link
+              to="/offers"
+              className={`uppercase font-semibold py-[10px] px-[5px] hover:text-clrGold transition-all ease-in-out duration-200 ${
+                pathMatchRoute("/offers") && "text-white "
+              }`}
+            >
+              Offers
+            </Link>
+            <Link
+              to="/category/sale"
+              className={`uppercase font-semibold py-[10px] px-[5px] hover:text-clrGold transition-all ease-in-out duration-200 ${
+                pathMatchRoute("/category/sale") && "text-white "
+              }`}
+            >
+              Buy
+            </Link>
+            <Link
+              to="/category/rent"
+              className={`uppercase font-semibold py-[10px] px-[5px] hover:text-clrGold transition-all ease-in-out duration-200 ${
+                pathMatchRoute("/category/rent") && "text-white "
+              }`}
+            >
+              Rent
+            </Link>
             <Link
               to="/profile"
               className={`uppercase font-semibold py-[10px] px-[5px] hover:text-clrGold transition-all ease-in-out duration-200 ${

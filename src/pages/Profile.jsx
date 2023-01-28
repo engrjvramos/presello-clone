@@ -140,13 +140,14 @@ const Profile = () => {
                   disabled={!changeDetail}
                   className="w-full mb-12 px-4 py-2 text-gray-700 bg-white border-gray-300 rounded transition ease-in-out"
                 />
-
-                <button
-                  onClick={onLogout}
-                  className="uppercase font-semibold text-sm py-2 px-3 border-2 border-gray-500 bg-white text-clrDark hover:bg-gray-500 hover:text-white transition-all ease-in-out"
-                >
-                  Sign out
-                </button>
+                <div className="flex justify-end">
+                  <button
+                    onClick={onLogout}
+                    className="uppercase font-semibold text-sm py-2 px-3 border-2 border-gray-500 bg-white text-clrDark hover:bg-gray-500 hover:text-white transition-all ease-in-out"
+                  >
+                    Sign out
+                  </button>
+                </div>
               </form>
             </div>
           </div>

@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import {
+  doc,
+  getDoc,
+  collection,
+  getDocs,
+  limit,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -28,14 +37,17 @@ import {
 import { MdLocationOn } from "react-icons/md";
 import Contact from "../components/Contact";
 import Spinner from "../components/Spinner";
+import ListingItem from "../components/ListingItem";
+import { toast } from "react-toastify";
 
 const Listing = () => {
   const auth = getAuth();
   const params = useParams();
   const [listing, setListing] = useState(null);
+  const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
   const [shareLinkCopied, setShareLinkCopied] = useState(false);
-  const [contactLandlord, setContactLandlord] = useState(false);
+  const [contactOwner, setContactOwner] = useState(false);
 
   SwiperCore.use([Autoplay, Navigation, Pagination]);
 
@@ -50,6 +62,34 @@ const Listing = () => {
     };
     fetchListing();
   }, [params.listingId]);
+
+  useEffect(() => {
+    async function fetchListings() {
+      try {
+        const listingRef = collection(db, "listings");
+        const q = query(
+          listingRef,
+          where("offerType", "==", params.categoryName),
+          orderBy("timestamp", "desc"),
+          limit(3),
+        );
+
+        const querySnap = await getDocs(q);
+        const listings = [];
+        querySnap.forEach((doc) => {
+          return listings.push({
+            id: doc.id,
+            data: doc.data(),
+          });
+        });
+        setListings(listings);
+        setLoading(false);
+      } catch (error) {
+        toast.error("Could not fetch listings");
+      }
+    }
+    fetchListings();
+  }, [params.categoryName]);
 
   if (loading) {
     return <Spinner />;
@@ -113,20 +153,22 @@ const Listing = () => {
             ))}
           </Swiper>
         </section>
-        <section className="grid grid-cols-2 gap-6">
+        <section>
           <div className="my-8">
             {/* Heading */}
-            <div className="text-gray-500 font-medium">
-              <p>Presello ID {params.listingId.slice(-6).toUpperCase()}</p>
-            </div>
-            <div className="flex items-center gap-x-2 text-sm mt-4">
-              <div className="flex items-center uppercase text-gray-700 font-semibold py-1 px-4 bg-green-200 select-none">
-                <FaSign className="mr-2" />
-                {listing.offerType === "rent" ? "For Rent" : "For Sale"}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 border-b border-gray-300">
+              <div className="text-gray-500 font-medium">
+                <p>Presello ID {params.listingId.slice(-6).toUpperCase()}</p>
               </div>
-              <div className="flex items-center uppercase text-gray-700 font-semibold py-1 px-4 bg-orange-200 select-none">
-                <FaHome className="mr-2" />
-                {listing.propertyType}
+              <div className="flex items-center gap-x-2 text-sm">
+                <div className="flex items-center uppercase text-gray-700 font-semibold py-1 px-4 bg-green-200 select-none">
+                  <FaSign className="mr-2" />
+                  {listing.offerType === "rent" ? "For Rent" : "For Sale"}
+                </div>
+                <div className="flex items-center uppercase text-gray-700 font-semibold py-1 px-4 bg-orange-200 select-none">
+                  <FaHome className="mr-2" />
+                  {listing.propertyType}
+                </div>
               </div>
             </div>
 
@@ -158,7 +200,7 @@ const Listing = () => {
               </div>
             </div>
             {/* DATA */}
-            <div className="grid grid-cols-3 max-[360px]:grid-cols-2 gap-y-8 gap-x-4 my-8 text-xs md:text-sm">
+            <div className="grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-6 gap-y-8 gap-x-4 my-8 text-xs md:text-sm">
               <div>
                 <div className="flex items-center justify-center">
                   <FaBed className="text-2xl mr-2" />
@@ -227,7 +269,7 @@ const Listing = () => {
             {/* FEATURES */}
             <div className="mb-8">
               <h4 className="font-semibold mb-2">Features</h4>
-              <ul>
+              <ul className="grid xs:grid-cols-2 sm:grid-cols-3">
                 {listing.features.map((feature, index) => (
                   <li
                     key={index}
@@ -258,22 +300,43 @@ const Listing = () => {
                 ></Marker>
               </MapContainer>
             </div>
-            {listing.userRef !== auth.currentUser?.uid && !contactLandlord && (
+            {listing.userRef !== auth.currentUser?.uid && !contactOwner && (
               <div className="mt-6">
                 <button
-                  className="w-full text-white text-center px-7 py-3 bg-blue-600 font-medium text-sm uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg transition duration-150 ease-in-out"
-                  onClick={() => setContactLandlord(true)}
+                  className="px-7 py-3 bg-clrGold text-clrDark text-sm uppercase font-semibold shadow-md hover:bg-clrDark hover:shadow-lg hover:text-clrGold  focus:shadow-lg active:shadow-lg active:text-white transition duration-150 ease-in-out w-full text-center mb-6"
+                  onClick={() => setContactOwner(true)}
                 >
-                  Contact Landlord
+                  Contact Owner
                 </button>
               </div>
             )}
-            {contactLandlord && (
+            {contactOwner && (
               <Contact userRef={listing.userRef} listing={listing} />
             )}
           </div>
         </section>
-        <section>similar properties</section>
+        <section className="my-6">
+          <h2 className="font-semibold text-2xl uppercase tracking-wider text-center mb-6">
+            Suggested Properties
+          </h2>
+          {loading ? (
+            <Spinner />
+          ) : listings && listings.length > 0 ? (
+            <>
+              <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {listings.map((listing) => (
+                  <ListingItem
+                    key={listing.id}
+                    id={listing.id}
+                    listing={listing.data}
+                  />
+                ))}
+              </ul>
+            </>
+          ) : (
+            <p>There are no current offers.</p>
+          )}
+        </section>
       </div>
     </main>
   );

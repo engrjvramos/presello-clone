@@ -1,5 +1,6 @@
-import Sidebar from "../components/Sidebar";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { db } from "../firebase";
 import {
   collection,
   getDocs,
@@ -8,9 +9,8 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { Link } from "react-router-dom";
 import ListingItem from "../components/ListingItem";
-import { db } from "../firebase";
+import { MdDoubleArrow } from "react-icons/md";
 
 const Home = () => {
   // Fetching Offers
@@ -25,7 +25,7 @@ const Home = () => {
           listingsRef,
           where("offer", "==", true),
           orderBy("timestamp", "desc"),
-          limit(4),
+          limit(3),
         );
         // Execute the query
         const querySnap = await getDocs(q);
@@ -56,7 +56,7 @@ const Home = () => {
           listingsRef,
           where("offerType", "==", "rent"),
           orderBy("timestamp", "desc"),
-          limit(4),
+          limit(3),
         );
         // Execute the query
         const querySnap = await getDocs(q);
@@ -87,7 +87,7 @@ const Home = () => {
           listingsRef,
           where("offerType", "==", "sale"),
           orderBy("timestamp", "desc"),
-          limit(4),
+          limit(3),
         );
         // Execute the query
         const querySnap = await getDocs(q);
@@ -107,18 +107,22 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <Sidebar />
-      <div className="max-w-7xl mx-auto pt-4 space-y-6 mb-12">
+    <main>
+      <div className="max-w-7xl mx-auto space-y-6 my-12 px-5">
+        {/* OFFER LISTINGS */}
         {offerListings && offerListings.length > 0 && (
-          <div>
-            <h2 className="px-3 text-2xl mt-6 font-semibold">Recent offers</h2>
-            <Link to={"/offers"}>
-              <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
-                Show more offers
-              </p>
-            </Link>
-            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <section>
+            <div className="pb-2 mb-6 border-b border-gray-300 flex items-center justify-between">
+              <h2 className="text-gray-800 text-2xl font-medium tracking-wider capitalize">
+                Recent offers
+              </h2>
+              <Link to={"/offers"}>
+                <p className="text-sm font-medium text-gray-500 hover:text-clrGold transition duration-150 ease-in-out">
+                  View more <MdDoubleArrow className="inline-block" />
+                </p>
+              </Link>
+            </div>
+            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {offerListings.map((listing) => (
                 <ListingItem
                   key={listing.id}
@@ -127,40 +131,22 @@ const Home = () => {
                 />
               ))}
             </ul>
-          </div>
+          </section>
         )}
-        {rentListings && rentListings.length > 0 && (
-          <div>
-            <h2 className="px-3 text-2xl mt-6 font-semibold">
-              Places for rent
-            </h2>
-            <Link to={"/category/rent"}>
-              <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
-                Show more places for rent
-              </p>
-            </Link>
-            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {rentListings.map((listing) => (
-                <ListingItem
-                  key={listing.id}
-                  listing={listing.data}
-                  id={listing.id}
-                />
-              ))}
-            </ul>
-          </div>
-        )}
+        {/* SALE LISTINGS */}
         {saleListings && saleListings.length > 0 && (
-          <div>
-            <h2 className="px-3 text-2xl mt-6 font-semibold">
-              Places for sale
-            </h2>
-            <Link to={"/category/sale"}>
-              <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
-                Show more places for sale
-              </p>
-            </Link>
-            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <section>
+            <div className="pb-2 mb-6 border-b border-gray-300 flex items-center justify-between">
+              <h2 className="text-gray-800 text-2xl font-medium tracking-wider capitalize">
+                Properties for sale
+              </h2>
+              <Link to={"/category/sale"}>
+                <p className="text-sm font-medium text-gray-500 hover:text-clrGold transition duration-150 ease-in-out">
+                  View more <MdDoubleArrow className="inline-block" />
+                </p>
+              </Link>
+            </div>
+            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {saleListings.map((listing) => (
                 <ListingItem
                   key={listing.id}
@@ -169,10 +155,34 @@ const Home = () => {
                 />
               ))}
             </ul>
-          </div>
+          </section>
+        )}
+        {/* RENT LISTINGS */}
+        {rentListings && rentListings.length > 0 && (
+          <section>
+            <div className="pb-2 mb-6 border-b border-gray-300 flex items-center justify-between">
+              <h2 className="text-gray-800 text-2xl font-medium tracking-wider capitalize">
+                Properties for rent
+              </h2>
+              <Link to={"/category/rent"}>
+                <p className="text-sm font-medium text-gray-500 hover:text-clrGold transition duration-150 ease-in-out">
+                  View more <MdDoubleArrow className="inline-block" />
+                </p>
+              </Link>
+            </div>
+            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {rentListings.map((listing) => (
+                <ListingItem
+                  key={listing.id}
+                  listing={listing.data}
+                  id={listing.id}
+                />
+              ))}
+            </ul>
+          </section>
         )}
       </div>
-    </div>
+    </main>
   );
 };
 
