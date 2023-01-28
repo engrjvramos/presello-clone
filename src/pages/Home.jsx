@@ -108,6 +108,31 @@ const Home = () => {
 
   return (
     <main>
+      <section
+        style={{
+          backgroundImage:
+            "linear-gradient(to right bottom, rgba(0,0,0,0.2),rgba(0,0,0,0.1)),url(https://www.presello.com/wp-content/uploads/2019/10/upscale-modern-townhouses-facade.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+          backgroundRepeat: "no-repeat",
+        }}
+        className="relative w-full h-[420px] overflow-hidden"
+      >
+        <div className="max-w-7xl mx-auto h-full grid items-center content-center justify-start gap-4 px-5">
+          <div>
+            <h2 className="uppercase font-medium tracking-widest text-2xl sm:text-4xl text-clrDark mb-2">
+              Invest in your future.
+            </h2>
+            <h2 className="uppercase font-medium tracking-widest text-2xl sm:text-4xl text-clrDark mb-4">
+              Invest in presello.
+            </h2>
+            <p className="text-gray-100">
+              Find your next home in Metro Manila through the most trusted and
+              reliable real estate advisors.
+            </p>
+          </div>
+        </div>
+      </section>
       <div className="max-w-7xl mx-auto space-y-6 my-12 px-5">
         {/* OFFER LISTINGS */}
         {offerListings && offerListings.length > 0 && (

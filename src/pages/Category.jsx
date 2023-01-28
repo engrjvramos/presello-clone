@@ -85,35 +85,38 @@ const Category = () => {
       <section
         style={{
           backgroundImage:
-            "linear-gradient(to right bottom, rgba(0,0,0,0.5),rgba(0,0,0,0.3)),url(https://www.presello.com/wp-content/uploads/2019/10/upscale-modern-townhouses-facade.jpg)",
+            "linear-gradient(to right bottom, rgba(0,0,0,0.4),rgba(0,0,0,0.2)),url(https://www.presello.com/wp-content/uploads/2019/10/upscale-modern-townhouses-facade.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
-        className="relative w-full h-[300px] overflow-hidden flex items-center "
+        className="relative w-full h-[420px] overflow-hidden"
       >
-        <h1 className="uppercase font-semibold tracking-wider text-3xl max-w-7xl mx-auto text-white">
-          {params.categoryName === "rent"
-            ? "Properties for rent"
-            : "Properties for sale"}
-        </h1>
+        <div className="max-w-7xl mx-auto h-full grid items-center content-center justify-center text-center md:justify-start gap-4 px-5">
+          <div>
+            <h2 className="uppercase font-medium tracking-widest text-3xl md:text-4xl text-gray-300 mb-2">
+              {params.categoryName === "rent"
+                ? "Properties for rent"
+                : "Properties for sale"}
+            </h2>
+          </div>
+        </div>
       </section>
-      <section className="max-w-7xl mx-auto my-12">
+      <section className="max-w-7xl mx-auto my-12 px-5">
         {loading ? (
           <Spinner />
         ) : listings && listings.length > 0 ? (
           <>
-            <main>
-              <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {listings.map((listing) => (
-                  <ListingItem
-                    key={listing.id}
-                    id={listing.id}
-                    listing={listing.data}
-                  />
-                ))}
-              </ul>
-            </main>
+            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {listings.map((listing) => (
+                <ListingItem
+                  key={listing.id}
+                  id={listing.id}
+                  listing={listing.data}
+                />
+              ))}
+            </ul>
+
             {lastFetchedListing && (
               <div className="flex justify-center items-center my-6">
                 <button

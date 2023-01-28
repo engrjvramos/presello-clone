@@ -34,16 +34,20 @@ const SignIn = () => {
       <section
         style={{
           backgroundImage:
-            "linear-gradient(to right bottom, rgba(0,0,0,0.5),rgba(0,0,0,0.3)),url(https://www.presello.com/wp-content/uploads/2019/10/upscale-modern-townhouses-facade.jpg)",
+            "linear-gradient(to right bottom, rgba(0,0,0,0.4),rgba(0,0,0,0.2)),url(https://www.presello.com/wp-content/uploads/2019/10/upscale-modern-townhouses-facade.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
-        className="relative w-full h-[300px] overflow-hidden flex items-center "
+        className="relative w-full h-[420px] overflow-hidden"
       >
-        <h1 className="uppercase font-semibold text-3xl max-w-7xl mx-auto text-white">
-          Sign In
-        </h1>
+        <div className="max-w-7xl mx-auto h-full grid items-center content-center justify-center text-center md:justify-start gap-4 px-5">
+          <div>
+            <h2 className="uppercase font-medium tracking-widest text-3xl md:text-4xl text-gray-300 mb-2">
+              Sign in
+            </h2>
+          </div>
+        </div>
       </section>
       <section>
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 md:gap-x-6 lg:gap-x-10 py-16 px-5">

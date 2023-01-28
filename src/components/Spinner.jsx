@@ -1,10 +1,10 @@
-import spinner from "../assets/spinner.svg";
+import { ImSpinner2 } from "react-icons/im";
 
 const Spinner = () => {
   return (
-    <div className="bg-black bg-opacity-50 flex items-center justify-center fixed left-0 right-0 top-0 bottom-0 z-50">
+    <div className="bg-black bg-opacity-20 flex items-center justify-center fixed inset-0 z-50">
       <div>
-        <img src={spinner} alt="Loading..." className="h-24 " />
+        <ImSpinner2 className="text-8xl animate-spin text-clrGold" />
       </div>
     </div>
   );

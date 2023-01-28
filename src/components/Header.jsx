@@ -10,6 +10,17 @@ const Header = () => {
   const [pageState, setPageState] = useState("Sign in");
   const auth = getAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const [fix, setFix] = useState(false);
+
+  const setFixed = () => {
+    if (window.scrollY >= 100) {
+      setFix(true);
+    } else {
+      setFix(false);
+    }
+  };
+
+  window.addEventListener("scroll", setFixed);
 
   const pathMatchRoute = (route) => {
     if (route === location.pathname) {
@@ -46,8 +57,12 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-clrDark shadow-sm">
-        <div className="max-w-7xl mx-auto p-5 text-gray-400 flex items-center justify-between">
+      <header className="fixed top-0 z-40 w-full bg-clrDark shadow-sm ">
+        <div
+          className={`max-w-7xl mx-auto px-5 text-gray-400 flex items-center justify-between transition-all ease-in duration-200 ${
+            fix ? "py-[14px]" : "py-5"
+          }`}
+        >
           <div>
             <img
               src="https://www.presello.com/wp-content/uploads/2019/10/presello-logo-text.png"
@@ -110,6 +125,7 @@ const Header = () => {
           </div>
         </div>
       </header>
+
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} pageState={pageState} />
       <div
         className={`fixed -z-10 bg-black bg-opacity-60 opacity-0 transition-all duration-300 ease-in-out ${
