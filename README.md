@@ -39,7 +39,7 @@ A real-estate web app built with React, Firebase and TailwindCSS that allows use
 
 ### Project purpose and goal
 
-The main purpose of this project is to take advantage of the capabilities of Firebase and have a functional web app up and running quickly. Secondly, since this is my first big project using React, I want to practice more with the framework itself and dive deeply into its convenient features.
+The main purpose of this project is to take advantage of the capabilities of Firebase and have a functional web app up and running quickly. Secondly, I want to practice more with the framework itself and dive deeply into its convenient features.
 
 ### Built with
 
@@ -48,15 +48,6 @@ The main purpose of this project is to take advantage of the capabilities of Fir
 - [LeafletJS](https://leafletjs.com/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [Firebase](https://firebase.google.com/)
-
-### Lesson learned
-
-I could not count how many lessons that I have learned from building this application. However, there are 3 most important lessons that I got out of it.
-
-1. Using Firebase Authentication, Storage, and Database for users and listings. At first, I had no idea on how to implement these features but thankfully firebase provides a guide on their website on what to do and give examples on how to do it.
-
-2. Having a better understanding of Short Circuiting (&&), the Nullish Coalescing Operator (??), and Optional Chaining (.?). These modern operators makes it easier to code conditional functions and makes your code cleaner and more readable instead of using if-statements.
-3. Having a better understanding of useState, useEffect and custom hooks.
 
 ### Future improvements
 
