@@ -11,13 +11,11 @@
   - [Details](#details)
     - [Project purpose and goal](#project-purpose-and-goal)
     - [Built with](#built-with)
-    - [Lesson learned](#lesson-learned)
     - [Future improvements](#future-improvements)
   - [Getting started](#getting-started)
     - [Installing](#installing)
   - [Contributing](#contributing)
   - [Author](#author)
-  - [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -29,7 +27,7 @@ A real-estate web app built with React, Firebase and TailwindCSS that allows use
 
 - Original Website: [Presello](https://www.presello.com/)
 - Solution URL: [GitHub](https://github.com/engrjvramos/presello-clone)
-- Live Site URL: [Vercel](https://presello-clone.vercel.app)
+- Live Site URL: [Vercel](https://presello-clone-engrjvramos.vercel.app)
 
 ### Screenshot
 
@@ -77,4 +75,4 @@ Please feel free to send pull request if you want to contribute!
 
 ## Author
 
-- JVR - [engrjvramos](https://engrjvramos.github.io)
+- [engrjvramos](https://engrjvramos.github.io)
